@@ -3,6 +3,8 @@ Linux-IPC-Pipes
 
 
 # Ex03-Linux IPC - Pipes
+## REG NO: 212223040029
+# NAME: T DANUSH REDDY
 
 # AIM:
 To write a C program that illustrate communication between two process using unnamed and named pipes
@@ -25,74 +27,25 @@ Testing the C Program for the desired output.
 
 ## C Program that illustrate communication between two process using unnamed pipes using Linux API system calls
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<sys/types.h> 
-#include<sys/stat.h> 
-#include<string.h> 
-#include<fcntl.h> 
-#include<unistd.h>
-#include<sys/wait.h>
-void server(int,int); 
-void client(int,int); 
-int main() 
-{ 
-int p1[2],p2[2],pid, *waits; 
-pipe(p1); 
-pipe(p2); 
-pid=fork(); 
-if(pid==0) { 
-close(p1[1]); 
-close(p2[0]); 
-server(p1[0],p2[1]); return 0;
- } 
-close(p1[0]); 
-close(p2[1]); 
-client(p1[1],p2[0]); 
-wait(waits); 
-return 0; 
-} 
+![image](https://github.com/user-attachments/assets/0887c562-2ed2-4931-9ef9-f3851a065e26)
 
-void server(int rfd,int wfd) 
-{ 
-int i,j,n; 
-char fname[2000]; 
-char buff[2000];
-n=read(rfd,fname,2000);
-fname[n]='\0';
-int fd=open(fname,O_RDONLY);
-sleep(10); 
-if(fd<0) 
-write(wfd,"can't open",9); 
-else 
-n=read(fd,buff,2000); 
-write(wfd,buff,n); 
-}
-void client(int wfd,int rfd) {
-int i,j,n; char fname[2000];
-char buff[2000];
-printf("ENTER THE FILE NAME :");
-scanf("%s",fname);
-printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
-sleep(10);
-write(wfd,fname,2000);
-n=read(rfd,buff,2000);
-buff[n]='\0';
-printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
-}
 
 
 
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/eb099790-eafc-4c79-a201-896af8eb5669)
 
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
 
+![image](https://github.com/user-attachments/assets/1d376dfc-e6f5-495e-8b63-f53c34458804)
 
 
 
 
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/e5f1acab-688f-4293-b8cb-2a05c68ebc73)
+![image](https://github.com/user-attachments/assets/742d4b4a-ddba-41b5-9154-744006ecb4d9)
 
 
 # RESULT:
